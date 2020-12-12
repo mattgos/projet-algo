@@ -1,12 +1,11 @@
 Package: projet
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Attribution d'élèves à des projets
 Version: 1.0
 Date: 2020-12-12
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full
-         sentences.
+Author: MANOUVRIEZ Dorian, GOSSET Matthieu, BERNARD Clément
+Maintainer: Matthieu GOSSET <matthieu.gosset@ensiie.fr>
+Description: Ce package propose des méthodes (naïves et optimisées pour attribuer une liste d'équipes d'élèves avec des projets selon la préférence des élèves)
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp

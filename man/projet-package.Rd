@@ -3,11 +3,10 @@
 \alias{projet}
 \docType{package}
 \title{
-  A short title line describing what the package does
+  Attribution d'élèves à des projets
 }
 \description{
-  A more detailed description of what the package does. A length
-  of about one to five lines is recommended.
+  Ce package propose des méthodes (naïves et optimisées pour attribuer une liste d'équipes d'élèves avec des projets selon la préférence des élèves)
 }
 \details{
   This section should provide a more detailed overview of how to use the

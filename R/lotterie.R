@@ -3,8 +3,6 @@
 #G=list(c(1,5,3),c(2,6),c(4),c(7,10),c(8),c(9))
 #R=list(c(1,3),c(2,3,1),c(3),c(1,2,3),c(2,1),c(1,3))
 
-for (i in p) print(i)
-
 lotterie<-function(P,p,G,R){
   ind_group=1:length(G)
   nb_proj=length(P)

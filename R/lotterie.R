@@ -31,8 +31,6 @@ lotterie<-function(P,p,G,R){
 
       C[[i]]=c
     }
-    
-    print(C)
 
     #boucle attribution
     for (i in 1:nb_proj){

@@ -5,6 +5,43 @@
 
 using namespace Rcpp;
 
+// which_is_equal
+int which_is_equal(IntegerVector v, int nombre);
+RcppExport SEXP _projet_which_is_equal(SEXP vSEXP, SEXP nombreSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type v(vSEXP);
+    Rcpp::traits::input_parameter< int >::type nombre(nombreSEXP);
+    rcpp_result_gen = Rcpp::wrap(which_is_equal(v, nombre));
+    return rcpp_result_gen;
+END_RCPP
+}
+// is_element
+bool is_element(int n, IntegerVector v);
+RcppExport SEXP _projet_is_element(SEXP nSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_element(n, v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lottery_rcpp
+List lottery_rcpp(List P, List G, List R);
+RcppExport SEXP _projet_lottery_rcpp(SEXP PSEXP, SEXP GSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type P(PSEXP);
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< List >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(lottery_rcpp(P, G, R));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_hello_world
 List rcpp_hello_world();
 RcppExport SEXP _projet_rcpp_hello_world() {
@@ -17,6 +54,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_projet_which_is_equal", (DL_FUNC) &_projet_which_is_equal, 2},
+    {"_projet_is_element", (DL_FUNC) &_projet_is_element, 2},
+    {"_projet_lottery_rcpp", (DL_FUNC) &_projet_lottery_rcpp, 3},
     {"_projet_rcpp_hello_world", (DL_FUNC) &_projet_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };

@@ -65,8 +65,6 @@ lotterie<-function(P,p,G,R){
         }
       }
     }
-    print(X)
-    print(ind_group)
     h=h+1
   }
   

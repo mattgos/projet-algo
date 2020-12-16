@@ -35,25 +35,38 @@ bool is_element(int n, IntegerVector v) {
 
 //' Which algorithme using C++
 //' 
+//' @param G une liste de groupe d'étudiant
+//' @return le nombre d'étudiant total
+//' @export
+// [[Rcpp::export]]
+int comptage_eleve(List groupe) {
+  int res = 0;
+  for(int g = 0; g < groupe.size(); g++) {
+    IntegerVector v = groupe[g];
+    res += v.size();
+  }
+  return(res);
+}
+
+//' Which algorithme using C++
+//' 
 //' @param P une liste de projet avec des équipes de projet
 //' @param G une liste de groupe d'étudiant
 //' @param R une liste de voeu classée par ordre de priorité pour chaque groupe
-//' @return renvoie une liste X pour chaque équipe projet remplie ou non par des groupes
+//' @return renvoie une matrice X de taille (nb eleves,4) telle que chaque colonne correspond à l'élève, son groupe, son projet et son équipe-projet
 //' @export
 // [[Rcpp::export]]
-List lottery_rcpp(List P, List G, List R) {
+IntegerMatrix lottery_rcpp(List P, List G, List R) {
   List P_copy(P.size());
   for(int p = 0; p < P.size(); p++){
     P_copy[p] = P[p];
   }
+  int nb_eleve = comptage_eleve(G);
   IntegerVector numero_groupe = seq(1,G.size());
   IntegerVector numero_projet = seq(1,P.size());
-  List X(P.size());
-  for(int x = 0; x < X.size(); x++) {
-    List pj = P[x];
-    List x_pj(pj.size());
-    X[x] = x_pj;
-  }
+  IntegerMatrix X(nb_eleve,4);
+  CharacterVector nom_colonnes = CharacterVector::create("Eleve","Groupe","Projet","Equipe-projet");
+  colnames(X) = nom_colonnes;
   int h = 0;
   int nb_groupe = numero_groupe.length();
   while(nb_groupe != 0 && h < P.size()){
@@ -71,23 +84,28 @@ List lottery_rcpp(List P, List G, List R) {
       C[i] = c_pi;
     }
     for(int i = 0; i < numero_projet.length(); i++) {
-      List x_pj = X[i];
       IntegerVector c = C[i];
       int taille_c = c.size();
       if (taille_c > 0) {
         c = sample(c,taille_c,false,R_NilValue);
         for(int k = 0; k < taille_c; k++) {
+          int projet = numero_projet[k];
           int groupe_choisi = c[k];
           IntegerVector projet_equipe = P_copy[i];
+          IntegerVector groupe_eleve = G[groupe_choisi - 1];
           for(int j = 0; j < projet_equipe.length(); j++) {
-            List equipe = x_pj[j];
-            IntegerVector groupe_eleve = G[groupe_choisi - 1];
+            int equipe_projet = j+1;
             int temporaire = projet_equipe[j] - groupe_eleve.length();
             if (temporaire >= 0) {
               projet_equipe[j] = temporaire;
               P_copy[i] = projet_equipe;
-              equipe.push_back(groupe_choisi);
-              x_pj[j] = equipe;
+              for(int eleve = 0; eleve < groupe_eleve.length(); eleve++) {
+                int individu = groupe_eleve[eleve];
+                X(individu - 1,0) = individu;
+                X(individu - 1,1) = groupe_choisi;
+                X(individu - 1,2) = projet;
+                X(individu - 1,3) = equipe_projet;
+              }
               int indice = which_is_equal(numero_groupe,groupe_choisi);
               numero_groupe.erase(indice);
               break;
@@ -99,8 +117,12 @@ List lottery_rcpp(List P, List G, List R) {
             int indice = which_is_equal(numero_groupe,groupe_choisi);
             numero_groupe.erase(indice);
           }
+          for(int eleve = 0; eleve < groupe_eleve.size(); eleve++) {
+            int individu = groupe_eleve[eleve];
+            X(individu - 1,0) = individu;
+            X(individu - 1,1) = groupe_choisi;
+          }
         }
-        X[i] = x_pj;
       }
     }
     nb_groupe = numero_groupe.length();

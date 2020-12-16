@@ -1,4 +1,4 @@
-# Projet d'Alogrithmique
+# Projet d'Algorithmique
 ### Dorian Manouvriez
 ### Matthieu Gosset
 ### Clément Bernard

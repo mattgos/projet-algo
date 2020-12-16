@@ -27,6 +27,8 @@ Voyons comment elles fonctionnent avec un exemple.
 
 <a id="prex"></a>
 
+## Premier exemple : solution naïve
+
 Prenons un premier petit exemple :
 
 On prend **3 projets** :

@@ -66,6 +66,34 @@ lotterie<-function(P,p,G,R){
     h=h+1
   }
   
-  return(X)
+  nb_eleve=0
+  for (i in G){
+    nb_eleve=nb_eleve+length(i)
+  }
+  
+  res<-matrix(rep(0,4*nb_eleve),ncol=4)
+  res[,1]<-1:(nb_eleve)
+  for (i in 1:nb_eleve){
+    for (j in 1:nb_gr){
+      if (i%in%G[[j]]){
+        res[i,2]<-j
+        break
+      }
+    }
+  }
+  
+  for (i in 1:nb_proj){
+    for (j in 1:length(p[[i]])){
+      g<-G[X[[i]][[j]]]
+      for (k in g){
+        res[k,3]<-i
+        res[k,4]<-j
+      }
+    }
+  }
+  
+  colnames(res)<-c("Eleve","Groupe","Projet","Equipe-projet")
+  return(res)
 }
+
 

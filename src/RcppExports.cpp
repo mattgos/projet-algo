@@ -29,8 +29,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// comptage_eleve
+int comptage_eleve(List groupe);
+RcppExport SEXP _projet_comptage_eleve(SEXP groupeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type groupe(groupeSEXP);
+    rcpp_result_gen = Rcpp::wrap(comptage_eleve(groupe));
+    return rcpp_result_gen;
+END_RCPP
+}
 // lottery_rcpp
-List lottery_rcpp(List P, List G, List R);
+IntegerMatrix lottery_rcpp(List P, List G, List R);
 RcppExport SEXP _projet_lottery_rcpp(SEXP PSEXP, SEXP GSEXP, SEXP RSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -56,6 +67,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_projet_which_is_equal", (DL_FUNC) &_projet_which_is_equal, 2},
     {"_projet_is_element", (DL_FUNC) &_projet_is_element, 2},
+    {"_projet_comptage_eleve", (DL_FUNC) &_projet_comptage_eleve, 1},
     {"_projet_lottery_rcpp", (DL_FUNC) &_projet_lottery_rcpp, 3},
     {"_projet_rcpp_hello_world", (DL_FUNC) &_projet_rcpp_hello_world, 0},
     {NULL, NULL, 0}

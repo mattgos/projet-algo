@@ -32,10 +32,25 @@ simu<-function(nb_eleve,nb_proj){
     j=j+1
   }
   
+  t_gr=c()
+  for (i in 1:nb_group){
+    t_gr=c(t_gr,length(G[[i]]))
+  }
+  
+  ordre<-rev(sort(t_gr,index.return=T)$ix)
+  print(ordre)
+  print(G)
+  G_sort=vector("list",nb_group)
+  j=1
+  for (i in ordre){
+    G_sort[[j]]=G[[i]]
+    j=j+1
+  }
+  
   R=matrix(0,ncol=nb_proj,nrow=nb_group)
   for (i in 1:nb_group){
     R[i,]=sample(1:nb_proj)
   }
   
-  return(list(P=P,G=G,R=R))
+  return(list(P=P,G=G_sort,R=R))
 }

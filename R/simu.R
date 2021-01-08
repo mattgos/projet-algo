@@ -1,5 +1,10 @@
 simu<-function(nb_eleve,nb_proj){
   
+  if (nb_eleve<nb_proj){
+    print("Le nombre d'élèves doit être égal ou supérieur au nombre de projets")
+    return(NULL);
+  }
+  
   cap_proj<-nb_eleve%/%nb_proj
   reste<-nb_eleve%%nb_proj
   P<-rep(cap_proj,nb_proj)
@@ -38,8 +43,6 @@ simu<-function(nb_eleve,nb_proj){
   }
   
   ordre<-rev(sort(t_gr,index.return=T)$ix)
-  print(ordre)
-  print(G)
   G_sort=vector("list",nb_group)
   j=1
   for (i in ordre){

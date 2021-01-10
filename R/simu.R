@@ -13,14 +13,12 @@ simu<-function(nb_eleve,nb_proj){
   
   repart_eleve=1:nb_eleve
   nb_group=sample(nb_proj:nb_eleve,1)
-  print(nb_group)
   prem=sample(repart_eleve,nb_group)
   G=list()
   for (i in prem){
     G=append(G,i)
     
   }
-  print(repart_eleve)
   repart_eleve=repart_eleve[!(repart_eleve %in% prem)]
   
   while (length(repart_eleve)>reste){

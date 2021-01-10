@@ -96,24 +96,21 @@ IntegerMatrix enumeration_rcpp(List G, IntegerVector P,IntegerMatrix R){
       }
     }
   }
-  IntegerVector taille_groupe(G.size());
-  for(int j = 0; j < G.size(); j++){
-    IntegerVector v = G[j];
-    taille_groupe[j] = v.size();
-  }
-  int nb_eleve = sum(taille_groupe);
-  IntegerMatrix Sol(nb_eleve,3);
+  int nb_eleve = sum(t);
+  IntegerMatrix resultat(nb_eleve,3);
   CharacterVector nom_colonnes = CharacterVector::create("Eleve","Groupe","Projet");
-  colnames(Sol) = nom_colonnes;
+  colnames(resultat) = nom_colonnes;
   for(int groupe = 0; groupe < G.size(); groupe ++){
     IntegerVector individu = G[groupe];
     for(int projet = 0; projet < P.size(); projet ++){
-      for(int k = 0; k < individu.size(); k++){
-        Sol(individu[k] - 1, 0) = individu[k];
-        Sol(individu[k] - 1, 1) = groupe + 1;
-        Sol(individu[k] - 1, 2) = projet + 1;
+      if(sol(groupe,projet) == 1){
+        for(int k = 0; k < individu.size(); k++){
+          resultat(individu[k] - 1, 0) = individu[k];
+          resultat(individu[k] - 1, 1) = groupe + 1;
+          resultat(individu[k] - 1, 2) = projet + 1;
+        }
       }
     }
   }
-  return(Sol);
+  return(resultat);
 }

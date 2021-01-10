@@ -13,22 +13,28 @@ simu<-function(nb_eleve,nb_proj){
   
   repart_eleve=1:nb_eleve
   nb_group=sample(nb_proj:nb_eleve,1)
+  print(nb_group)
   prem=sample(repart_eleve,nb_group)
   G=list()
   for (i in prem){
     G=append(G,i)
     
   }
-  
+  print(repart_eleve)
   repart_eleve=repart_eleve[!(repart_eleve %in% prem)]
   
   while (length(repart_eleve)>reste){
-    eleve=sample(repart_eleve,1)
+    if(length(repart_eleve)>1){
+      eleve=sample(repart_eleve,1)
+    }
+    if(length(repart_eleve)==1){
+      eleve=repart_eleve[1]
+    }
     groupe=sample(1:nb_group,1)
     if (length(G[[groupe]])<cap_proj){
       G[[groupe]]=c(G[[groupe]],eleve)
+      repart_eleve=repart_eleve[!(repart_eleve==eleve)]
     }
-    repart_eleve=repart_eleve[!(repart_eleve==eleve)]
   }
   ind_aj<-sample(1:nb_group,size=reste)
   j=1

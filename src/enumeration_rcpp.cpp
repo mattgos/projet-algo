@@ -105,9 +105,9 @@ IntegerMatrix enumeration_rcpp(List G, IntegerVector P,IntegerMatrix R){
   IntegerMatrix Sol(nb_eleve,3);
   CharacterVector nom_colonnes = CharacterVector::create("Eleve","Groupe","Projet");
   colnames(Sol) = nom_colonnes;
-  for(int groupe = 0; groupe < sol.nrow(); groupe ++){
+  for(int groupe = 0; groupe < G.size(); groupe ++){
     IntegerVector individu = G[groupe];
-    for(int projet = 0; projet < sol.ncol(); projet ++){
+    for(int projet = 0; projet < P.size(); projet ++){
       for(int k = 0; k < individu.size(); k++){
         Sol(individu[k] - 1, 0) = individu[k];
         Sol(individu[k] - 1, 1) = groupe + 1;

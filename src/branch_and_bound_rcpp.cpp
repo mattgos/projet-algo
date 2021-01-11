@@ -103,7 +103,7 @@ List branch_rcpp(IntegerVector chemin,List G,IntegerVector P, IntegerMatrix R) {
 }
 
 // [[Rcpp::export]]
-List branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
+IntegerMatrix branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
   List SP = Init_b_and_b_rcpp(G,P,R);
   int U = P.size()*G.size();
   IntegerVector chemin_pot;
@@ -126,8 +126,25 @@ List branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
       SP = elagage_rcpp(U,SP);
     }
   }
-  List Sol;
-  Sol.push_back(chemin_opti);
-  Sol.push_back(U);
+  List res;
+  res.push_back(chemin_opti);
+  res.push_back(U);
+  IntegerVector taille_g(G.size());
+  for(int j = 0; j < G.size(); j++){
+    IntegerVector v = G[j];
+    taille_g[j] = v.size();
+  }
+  int nb_eleve = sum(taille_g);
+  IntegerMatrix Sol(nb_eleve,3);
+  CharacterVector nom_colonnes = CharacterVector::create("Eleve","Groupe","Projet");
+  colnames(Sol) = nom_colonnes;
+  for(int i = 0; i < chemin_opti.length(); i++) {
+    IntegerVector individu = G[i];
+    for(int k = 0; k < individu.size(); k++){
+      Sol(individu[k] - 1, 0) = individu[k];
+      Sol(individu[k] - 1, 1) = i + 1;
+      Sol(individu[k] - 1, 2) = chemin_opti[i];
+    }
+  }
   return(Sol);
 }

@@ -77,5 +77,21 @@ branch_and_bound = function(G,P,R) {
       SP = elagage(U,SP)
     }
   }
-  return(list(chemin = chemin_opti, cout = U))
+  res = list(chemin = chemin_opti, cout = U)
+  taille_g = c()
+  for (i in 1:length(G)){
+    taille_g=c(taille_g,length(G[[i]]))
+  }
+  nb_eleve=sum(taille_g)
+  Sol = matrix(0,ncol=3,nrow = nb_eleve)
+  colnames(Sol)<-c("Eleve","Groupe","Projet")
+  for(i in 1:length(res$chemin)) {
+    for(k in G[[i]]){
+      eleve = k
+      Sol[k, 1] = k;
+      Sol[k, 2] = i;
+      Sol[k, 3] = chemin_opti[i];
+    }
+  }
+  return(Sol)
 }

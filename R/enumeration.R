@@ -32,7 +32,8 @@ enumeration = function(G,P,R){
   n = length(G)
   m = length(P)
   t = taille_groupe(G)
-  condition_projet = rep(1,n)
+  condition_projet_1 = rep(1,n)
+  condition_projet_2 = rep(0,m)
   f = m*sum(t)
   for(i in 0:(2^(n*m)-1)){
     if (i == 0){
@@ -41,7 +42,8 @@ enumeration = function(G,P,R){
     else{
       X = matrix((binarise(i,n,m)),n,m)
     }
-    if(sum(rowSums(X)) == length(G) && setequal(rowSums(X),condition_projet) && setequal(t%*%X,P)){
+    C = t%*%X - P
+    if(sum(rowSums(X)) == length(G) && setequal(rowSums(X),condition_projet_1) && setequal(C,condition_projet_2)){
       new_f = objectif(X,G,R)
       if(new_f < f){
         sol = X
@@ -49,5 +51,23 @@ enumeration = function(G,P,R){
       }
     }
   }
-  return(sol)
+  taille_g = c()
+  for (i in 1:length(G)){
+    taille_g=c(taille_g,length(G[[i]]))
+  }
+  nb_eleve=sum(taille_g)
+  resultat = matrix(0,ncol=3,nrow = nb_eleve)
+  colnames(resultat)<-c("Eleve","Groupe","Projet")
+  for(i in 1:length(G)) {
+    for(j in 1:length(P)) {
+      if(sol[i,j] == 1) {
+        for(k in G[[i]]){
+          resultat[k, 1] = k
+          resultat[k, 2] = i
+          resultat[k, 3] = j
+        }
+      }
+    }
+  }
+  return(resultat)
 }

@@ -1,9 +1,12 @@
 Init_b_and_b = function(G,P,R) {
   SP = c()
-  cout_ideal = length(G) - 1
+  cout_ideal = 0
+  for(i in 2:length(G)){
+    cout_ideal = cout_ideal + length(G[[i]])
+  }
   for(j in 1:length(P)){
     voeu = which(R[1,] == j)
-    new_cout = voeu + cout_ideal
+    new_cout = length(G[[1]]) * voeu + cout_ideal
     SP = c(SP,list(c(j,new_cout)))
   }
   return(SP)
@@ -17,15 +20,32 @@ cout_min = function(SP) {
   return(SP[[which.min(cout)]])
 }
 
+projet_dispo = function(chemin, G, P) {
+  liste_projet_dispo = c()
+  new_P = P
+  liste_projet = 1:length(P)
+  nb_groupe_designe = (length(chemin)-1)
+  taille_g = length(G[[nb_groupe_designe + 1]])
+  for(i in 1:nb_groupe_designe) {
+    new_P[chemin[i]] = new_P[chemin[i]] - length(G[[i]])
+  }
+  for(j in 1:length(new_P)) {
+    if(new_P[j] - taille_g >= 0) {
+      liste_projet_dispo = c(liste_projet_dispo, j)
+    }
+  }
+  return(liste_projet_dispo)  
+}
+
 branch = function(chemin, G, P, R) {
   SP = c()
   nb_groupe_designe = (length(chemin)-1)
-  cout_ideal = tail(chemin,1) - 1
-  liste_projet_dispo = (1:length(P))[-chemin[1:nb_groupe_designe]]
+  cout_ideal = tail(chemin,1) - length(G[[nb_groupe_designe + 1]])
+  liste_projet_dispo = projet_dispo(chemin,G,P)
   for(j in liste_projet_dispo) {
     new_chemin = chemin[1:nb_groupe_designe]
     voeu = which(R[nb_groupe_designe+1,] == j)
-    new_cout = voeu + cout_ideal
+    new_cout = length(G[[nb_groupe_designe + 1]])*voeu + cout_ideal
     new_chemin = append(new_chemin,c(j,new_cout))
     SP = c(SP,list(new_chemin))
   }
@@ -70,6 +90,7 @@ branch_and_bound = function(G,P,R) {
     SP = delete_chemin(chemin_pot, SP)
     branche = branch(chemin_pot, G, P, R)
     SP = c(branche, SP)
+    SP = elagage(U,SP) 
     t = test_chemin_trouve(SP,G)
     if(t != 0) {
       U = tail(SP[[t]],1)

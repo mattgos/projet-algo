@@ -60,8 +60,8 @@ int produit_scalaire_rcpp(IntegerVector U, IntegerVector V) {
 
 // [[Rcpp::export]]
 IntegerVector produit_vecteur_matrice(IntegerVector V, IntegerMatrix M) {
-  IntegerVector res(V.size());
-  for(int i = 0; i < V.size(); i++){
+  IntegerVector res(M.ncol());
+  for(int i = 0; i < M.ncol(); i++){
     IntegerVector m = M(_,i);
     int p = produit_scalaire_rcpp(V,m);
     res[i] = p;
@@ -74,21 +74,20 @@ IntegerMatrix enumeration_rcpp(List G, IntegerVector P,IntegerMatrix R){
   int n = G.size();
   int m = P.size();
   IntegerVector t = taille_groupe_rcpp(G);
-  IntegerVector condition_projet(n,1);
+  IntegerVector condition_projet_1(n,1);
+  IntegerVector condition_projet_2(m,0);
   IntegerMatrix sol(n,m);
   IntegerMatrix X(n,m);
   int f = m*sum(t);
   int fin =  pow(2,n*m);
   for(int i = 0; i < fin; i++){
-    if (i == 0){
-      X = IntegerMatrix(n,m);
-    }
-    else{
+    if(i !=0){
       IntegerVector b = binarise_rcpp(i,n,m);
-      X = IntegerMatrix(n,m, b.begin() );
+      X = IntegerMatrix(n,m, b.begin());
     }
     IntegerVector S = rowSums(X);
-    if(sum(S) == G.size() && setequal(S,condition_projet) && setequal(produit_vecteur_matrice(t,X),P)){
+    IntegerVector C = produit_vecteur_matrice(t,X) - P;
+    if(sum(S) == G.size() && setequal(S,condition_projet_1) && setequal(C,condition_projet_2)){
       int new_f = objectif_rcpp(X,G,R);
       if(new_f < f){
         sol = X;

@@ -14,11 +14,16 @@ int which_equal_bis(IntegerVector v, int nombre) {
 // [[Rcpp::export]]
 List Init_b_and_b_rcpp(List G, IntegerVector P,IntegerMatrix R) {
   List SP;
-  int cout_ideal = G.size() - 1;
+  int cout_ideal = 0;
+  for(int i = 1; i < G.size(); i++){
+    IntegerVector g = G[i];
+    cout_ideal = cout_ideal + g.length();
+  }
+  IntegerVector g1 = G[0];
   for(int j = 0; j < P.size(); j++){
     IntegerVector V = R(0,_);
     int voeu = which_equal_bis(V,j+1) + 1;
-    int new_cout = voeu + cout_ideal;
+    int new_cout = voeu*g1.length() + cout_ideal;
     IntegerVector chemin;
     chemin.push_back(j+1);
     chemin.push_back(new_cout);
@@ -77,24 +82,42 @@ List delete_chemin_rcpp(IntegerVector chemin,List SP) {
 }
 
 // [[Rcpp::export]]
+IntegerVector projet_dispo_rcpp(IntegerVector chemin,List G,IntegerVector P) {
+  IntegerVector liste_projet_dispo;
+  IntegerVector new_P(P.size());
+  for(int k = 0; k < P.size(); k ++) {
+    new_P[k] = P[k];
+  }
+  int nb_groupe_designe = (chemin.length()-1);
+  IntegerVector groupe = G[nb_groupe_designe];
+  int taille_g = groupe.length();
+  for(int i = 0; i < nb_groupe_designe; i++) {
+    int p = chemin[i];
+    IntegerVector g = G[i];
+    new_P[p-1] = new_P[p-1] - g.length();
+  }
+  for(int j = 0; j < new_P.size(); j++) {
+    if(new_P[j] - taille_g >= 0) {
+      liste_projet_dispo.push_back(j+1);
+    }
+  }
+  return(liste_projet_dispo);
+}
+
+// [[Rcpp::export]]
 List branch_rcpp(IntegerVector chemin,List G,IntegerVector P, IntegerMatrix R) {
   List SP;
   int nb_groupe_designe = chemin.length() - 1;
-  int cout_ideal = tail(chemin,1)[0] - 1;
+  IntegerVector g = G[nb_groupe_designe];
+  int cout_ideal = tail(chemin,1)[0] - g.length();
   IntegerVector projet = seq_len(P.size());
-  IntegerVector liste_projet_dispo;
+  IntegerVector liste_projet_dispo = projet_dispo_rcpp(chemin, G, P);
   IntegerVector chemin_suivi = head(chemin,nb_groupe_designe);
-  for (int i = 0; i < projet.length(); i++) {
-    int p = projet[i];
-    if(which_equal_bis(chemin_suivi, p) == -1) {
-      liste_projet_dispo.push_back(p);
-    }
-  }
   for(int j = 0; j < liste_projet_dispo.length(); j++) {
     IntegerVector new_chemin = head(chemin,nb_groupe_designe);
     IntegerVector V = R(nb_groupe_designe,_);
     int voeu = which_equal_bis(V,liste_projet_dispo[j]) + 1;
-    int new_cout = voeu + cout_ideal;
+    int new_cout = g.length()*voeu + cout_ideal;
     new_chemin.push_back(liste_projet_dispo[j]);
     new_chemin.push_back(new_cout);
     SP.push_back(new_chemin);
@@ -118,6 +141,7 @@ IntegerMatrix branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
       IntegerVector v = branche[i];
       SP.push_front(v);
     }
+    SP = elagage_rcpp(U,SP);
     int t = test_chemin_trouve_rcpp(SP,G);
     if(t != -1) {
       opti = SP[t];

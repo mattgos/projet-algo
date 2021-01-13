@@ -5,6 +5,241 @@
 
 using namespace Rcpp;
 
+// which_equal_bis
+int which_equal_bis(IntegerVector v, int nombre);
+RcppExport SEXP _projet_which_equal_bis(SEXP vSEXP, SEXP nombreSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type v(vSEXP);
+    Rcpp::traits::input_parameter< int >::type nombre(nombreSEXP);
+    rcpp_result_gen = Rcpp::wrap(which_equal_bis(v, nombre));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Init_b_and_b_rcpp
+List Init_b_and_b_rcpp(List G, IntegerVector P, IntegerMatrix R);
+RcppExport SEXP _projet_Init_b_and_b_rcpp(SEXP GSEXP, SEXP PSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type P(PSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(Init_b_and_b_rcpp(G, P, R));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cout_min_rcpp
+IntegerVector cout_min_rcpp(List SP);
+RcppExport SEXP _projet_cout_min_rcpp(SEXP SPSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type SP(SPSEXP);
+    rcpp_result_gen = Rcpp::wrap(cout_min_rcpp(SP));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_chemin_trouve_rcpp
+int test_chemin_trouve_rcpp(List SP, List G);
+RcppExport SEXP _projet_test_chemin_trouve_rcpp(SEXP SPSEXP, SEXP GSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type SP(SPSEXP);
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_chemin_trouve_rcpp(SP, G));
+    return rcpp_result_gen;
+END_RCPP
+}
+// elagage_rcpp
+List elagage_rcpp(int cout_opti, List SP);
+RcppExport SEXP _projet_elagage_rcpp(SEXP cout_optiSEXP, SEXP SPSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type cout_opti(cout_optiSEXP);
+    Rcpp::traits::input_parameter< List >::type SP(SPSEXP);
+    rcpp_result_gen = Rcpp::wrap(elagage_rcpp(cout_opti, SP));
+    return rcpp_result_gen;
+END_RCPP
+}
+// delete_chemin_rcpp
+List delete_chemin_rcpp(IntegerVector chemin, List SP);
+RcppExport SEXP _projet_delete_chemin_rcpp(SEXP cheminSEXP, SEXP SPSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type chemin(cheminSEXP);
+    Rcpp::traits::input_parameter< List >::type SP(SPSEXP);
+    rcpp_result_gen = Rcpp::wrap(delete_chemin_rcpp(chemin, SP));
+    return rcpp_result_gen;
+END_RCPP
+}
+// projet_dispo_rcpp
+IntegerVector projet_dispo_rcpp(IntegerVector chemin, List G, IntegerVector P);
+RcppExport SEXP _projet_projet_dispo_rcpp(SEXP cheminSEXP, SEXP GSEXP, SEXP PSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type chemin(cheminSEXP);
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type P(PSEXP);
+    rcpp_result_gen = Rcpp::wrap(projet_dispo_rcpp(chemin, G, P));
+    return rcpp_result_gen;
+END_RCPP
+}
+// branch_rcpp
+List branch_rcpp(IntegerVector chemin, List G, IntegerVector P, IntegerMatrix R);
+RcppExport SEXP _projet_branch_rcpp(SEXP cheminSEXP, SEXP GSEXP, SEXP PSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type chemin(cheminSEXP);
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type P(PSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(branch_rcpp(chemin, G, P, R));
+    return rcpp_result_gen;
+END_RCPP
+}
+// branch_and_bound_rcpp
+IntegerMatrix branch_and_bound_rcpp(List G, IntegerVector P, IntegerMatrix R);
+RcppExport SEXP _projet_branch_and_bound_rcpp(SEXP GSEXP, SEXP PSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type P(PSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(branch_and_bound_rcpp(G, P, R));
+    return rcpp_result_gen;
+END_RCPP
+}
+// which_equal
+int which_equal(IntegerVector v, int nombre);
+RcppExport SEXP _projet_which_equal(SEXP vSEXP, SEXP nombreSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type v(vSEXP);
+    Rcpp::traits::input_parameter< int >::type nombre(nombreSEXP);
+    rcpp_result_gen = Rcpp::wrap(which_equal(v, nombre));
+    return rcpp_result_gen;
+END_RCPP
+}
+// objectif_rcpp
+int objectif_rcpp(IntegerMatrix X, List G, IntegerMatrix R);
+RcppExport SEXP _projet_objectif_rcpp(SEXP XSEXP, SEXP GSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(objectif_rcpp(X, G, R));
+    return rcpp_result_gen;
+END_RCPP
+}
+// taille_groupe_rcpp
+IntegerVector taille_groupe_rcpp(List G);
+RcppExport SEXP _projet_taille_groupe_rcpp(SEXP GSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    rcpp_result_gen = Rcpp::wrap(taille_groupe_rcpp(G));
+    return rcpp_result_gen;
+END_RCPP
+}
+// binarise_rcpp
+IntegerVector binarise_rcpp(int i, int n, int m);
+RcppExport SEXP _projet_binarise_rcpp(SEXP iSEXP, SEXP nSEXP, SEXP mSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type i(iSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    rcpp_result_gen = Rcpp::wrap(binarise_rcpp(i, n, m));
+    return rcpp_result_gen;
+END_RCPP
+}
+// produit_scalaire_rcpp
+int produit_scalaire_rcpp(IntegerVector U, IntegerVector V);
+RcppExport SEXP _projet_produit_scalaire_rcpp(SEXP USEXP, SEXP VSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type U(USEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type V(VSEXP);
+    rcpp_result_gen = Rcpp::wrap(produit_scalaire_rcpp(U, V));
+    return rcpp_result_gen;
+END_RCPP
+}
+// produit_vecteur_matrice
+IntegerVector produit_vecteur_matrice(IntegerVector V, IntegerMatrix M);
+RcppExport SEXP _projet_produit_vecteur_matrice(SEXP VSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type V(VSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(produit_vecteur_matrice(V, M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// enumeration_rcpp
+IntegerMatrix enumeration_rcpp(List G, IntegerVector P, IntegerMatrix R);
+RcppExport SEXP _projet_enumeration_rcpp(SEXP GSEXP, SEXP PSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type P(PSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(enumeration_rcpp(G, P, R));
+    return rcpp_result_gen;
+END_RCPP
+}
+// is_elem
+bool is_elem(int n, IntegerVector v);
+RcppExport SEXP _projet_is_elem(SEXP nSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_elem(n, v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// produit_scalaire
+int produit_scalaire(IntegerVector U, IntegerVector V);
+RcppExport SEXP _projet_produit_scalaire(SEXP USEXP, SEXP VSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type U(USEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type V(VSEXP);
+    rcpp_result_gen = Rcpp::wrap(produit_scalaire(U, V));
+    return rcpp_result_gen;
+END_RCPP
+}
+// glouton_rcpp
+IntegerMatrix glouton_rcpp(List G, IntegerVector P, IntegerMatrix R);
+RcppExport SEXP _projet_glouton_rcpp(SEXP GSEXP, SEXP PSEXP, SEXP RSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type G(GSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type P(PSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    rcpp_result_gen = Rcpp::wrap(glouton_rcpp(G, P, R));
+    return rcpp_result_gen;
+END_RCPP
+}
 // which_is_equal
 int which_is_equal(IntegerVector v, int nombre);
 RcppExport SEXP _projet_which_is_equal(SEXP vSEXP, SEXP nombreSEXP) {
@@ -65,6 +300,25 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_projet_which_equal_bis", (DL_FUNC) &_projet_which_equal_bis, 2},
+    {"_projet_Init_b_and_b_rcpp", (DL_FUNC) &_projet_Init_b_and_b_rcpp, 3},
+    {"_projet_cout_min_rcpp", (DL_FUNC) &_projet_cout_min_rcpp, 1},
+    {"_projet_test_chemin_trouve_rcpp", (DL_FUNC) &_projet_test_chemin_trouve_rcpp, 2},
+    {"_projet_elagage_rcpp", (DL_FUNC) &_projet_elagage_rcpp, 2},
+    {"_projet_delete_chemin_rcpp", (DL_FUNC) &_projet_delete_chemin_rcpp, 2},
+    {"_projet_projet_dispo_rcpp", (DL_FUNC) &_projet_projet_dispo_rcpp, 3},
+    {"_projet_branch_rcpp", (DL_FUNC) &_projet_branch_rcpp, 4},
+    {"_projet_branch_and_bound_rcpp", (DL_FUNC) &_projet_branch_and_bound_rcpp, 3},
+    {"_projet_which_equal", (DL_FUNC) &_projet_which_equal, 2},
+    {"_projet_objectif_rcpp", (DL_FUNC) &_projet_objectif_rcpp, 3},
+    {"_projet_taille_groupe_rcpp", (DL_FUNC) &_projet_taille_groupe_rcpp, 1},
+    {"_projet_binarise_rcpp", (DL_FUNC) &_projet_binarise_rcpp, 3},
+    {"_projet_produit_scalaire_rcpp", (DL_FUNC) &_projet_produit_scalaire_rcpp, 2},
+    {"_projet_produit_vecteur_matrice", (DL_FUNC) &_projet_produit_vecteur_matrice, 2},
+    {"_projet_enumeration_rcpp", (DL_FUNC) &_projet_enumeration_rcpp, 3},
+    {"_projet_is_elem", (DL_FUNC) &_projet_is_elem, 2},
+    {"_projet_produit_scalaire", (DL_FUNC) &_projet_produit_scalaire, 2},
+    {"_projet_glouton_rcpp", (DL_FUNC) &_projet_glouton_rcpp, 3},
     {"_projet_which_is_equal", (DL_FUNC) &_projet_which_is_equal, 2},
     {"_projet_is_element", (DL_FUNC) &_projet_is_element, 2},
     {"_projet_comptage_eleve", (DL_FUNC) &_projet_comptage_eleve, 1},

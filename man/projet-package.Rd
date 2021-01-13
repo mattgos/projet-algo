@@ -3,10 +3,10 @@
 \alias{projet}
 \docType{package}
 \title{
-  Attribution d'élèves à des projets
+  Attribution eleves-projets
 }
 \description{
-  Ce package propose des méthodes (naïves et optimisées pour attribuer une liste d'équipes d'élèves avec des projets selon la préférence des élèves)
+  Ce package propose des methodes (naives et optimisees pour attribuer une liste d'equipes d'eleves avec des projets selon la preference des eleves)
 }
 \details{
   This section should provide a more detailed overview of how to use the

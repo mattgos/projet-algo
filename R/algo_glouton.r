@@ -14,13 +14,12 @@ glouton_algorithm = function(G,P,R){
   t=taille_groupe(G)
   while (c != length(G)) {
     for(i in 1:length(G)){
-      voeu = 1
-      while(!is.element(1,X[i,])){
+      for(voeu in 1:length(P)){
         projet = R[i,voeu]
-        if((t%*%X[,projet] + t[i] <= P[projet])){
+        if((t%*%X[,projet] + t[i] <= P[projet]) && !is.element(1,X[i,])){
           X[i,projet] = 1
+          break
         }
-        voeu = voeu + 1
       }
     }
     c = sum(colSums(X))

@@ -1,7 +1,7 @@
 simu<-function(nb_eleve,nb_proj){
   
   if (nb_eleve<nb_proj){
-    print("Le nombre d'élèves doit être égal ou supérieur au nombre de projets")
+    print("Le nombre d'eleves doit etre egal ou superieur au nombre de projets")
     return(NULL);
   }
   

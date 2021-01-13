@@ -11,35 +11,75 @@ simu<-function(nb_eleve,nb_proj){
   ind_aj<-sample(1:nb_proj,size=reste)
   P[ind_aj]=P[ind_aj]+1
   
-  repart_eleve=1:nb_eleve
-  nb_group=sample(nb_proj:nb_eleve,1)
-  prem=sample(repart_eleve,nb_group)
-  G=list()
-  for (i in prem){
-    G=append(G,i)
-    
-  }
-  repart_eleve=repart_eleve[!(repart_eleve %in% prem)]
+  P_rem=P
   
-  while (length(repart_eleve)>reste){
-    if(length(repart_eleve)>1){
-      eleve=sample(repart_eleve,1)
-    }
-    if(length(repart_eleve)==1){
-      eleve=repart_eleve[1]
-    }
-    groupe=sample(1:nb_group,1)
-    if (length(G[[groupe]])<cap_proj){
-      G[[groupe]]=c(G[[groupe]],eleve)
-      repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+  repart_eleve=1:nb_eleve
+  
+  G=list()
+  
+  for (i in 1:nb_proj){
+    while(P_rem[i]!=0){
+      if (P_rem[i]==1){
+        if (length(repart_eleve)==1){
+          G=append(G,c(repart_eleve))
+          repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+          P_rem[i]=P_rem[i]-1
+        }
+        else{
+          eleve=sample(repart_eleve,1)
+          G=append(G,c(eleve))
+          repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+          P_rem[i]=P_rem[i]-1
+        }
+      }
+      else{
+        if(length(repart_eleve)==1){
+          G=append(G,c(repart_eleve))
+          repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+          P_rem[i]=P_rem[i]-1
+        }
+        else{
+          nb_eleve_groupe=sample(1:P_rem[i],1)
+          gr=sample(repart_eleve,nb_eleve_groupe)
+          repart_eleve=repart_eleve[!(repart_eleve %in% gr)]
+          G=append(G,list(gr))
+          P_rem[i]=P_rem[i]-length(gr)
+        }
+      }
     }
   }
-  ind_aj<-sample(1:nb_group,size=reste)
-  j=1
-  for (i in repart_eleve){
-    G[[ind_aj[j]]]=c(G[[ind_aj[j]]],i)
-    j=j+1
-  }
+  
+  
+  # nb_group=sample(nb_proj:nb_eleve,1)
+  # prem=sample(repart_eleve,nb_group)
+  # G=list()
+  # for (i in prem){
+  #   G=append(G,i)
+  #   
+  # }
+  # repart_eleve=repart_eleve[!(repart_eleve %in% prem)]
+  # 
+  # while (length(repart_eleve)>reste){
+  #   if(length(repart_eleve)>1){
+  #     eleve=sample(repart_eleve,1)
+  #   }
+  #   if(length(repart_eleve)==1){
+  #     eleve=repart_eleve[1]
+  #   }
+  #   groupe=sample(1:nb_group,1)
+  #   if (length(G[[groupe]])<cap_proj){
+  #     G[[groupe]]=c(G[[groupe]],eleve)
+  #     repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+  #   }
+  # }
+  # ind_aj<-sample(1:nb_group,size=reste)
+  # j=1
+  # for (i in repart_eleve){
+  #   G[[ind_aj[j]]]=c(G[[ind_aj[j]]],i)
+  #   j=j+1
+  # }
+  
+  nb_group=length(G)
   
   t_gr=c()
   for (i in 1:nb_group){

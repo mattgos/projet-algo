@@ -10,17 +10,19 @@ taille_groupe<-function(G){
 
 glouton_algorithm = function(G,P,R){
   X = matrix(0,length(G),length(P))
-  voeu = 1
   c = sum(colSums(X))
   t=taille_groupe(G)
   while (c != length(G)) {
     for(i in 1:length(G)){
-      projet = R[i,voeu]
-      if((t%*%X[,projet] + t[i] <= P[projet]) && (!is.element(1,X[i,]))){
-        X[i,projet] = 1
+      voeu = 1
+      while(!is.element(1,X[i,])){
+        projet = R[i,voeu]
+        if((t%*%X[,projet] + t[i] <= P[projet])){
+          X[i,projet] = 1
+        }
+        voeu = voeu + 1
       }
     }
-    voeu = voeu + 1
     c = sum(colSums(X))
   }
   

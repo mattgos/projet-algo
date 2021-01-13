@@ -32,18 +32,21 @@ IntegerMatrix glouton_rcpp(List G, IntegerVector P, IntegerMatrix R) {
   IntegerMatrix Sol(nb_eleve,3);
   CharacterVector nom_colonnes = CharacterVector::create("Eleve","Groupe","Projet");
   colnames(Sol) = nom_colonnes;
-  int voeu = 0;
+  int voeu;
   int c = sum(rowSums(X));
   while(c != G.size()){
     for(int i = 0; i < G.size(); i++){
-      int projet = R(i,voeu);
-      IntegerVector col = X(_,projet-1);
+      voeu = 0;
       IntegerVector row = X(i,_);
-      if((produit_scalaire(taille_g,col) + taille_g[i] <= P[projet-1]) && (!is_elem(1,row))){
-        X(i,projet-1) = 1;
+      while(!is_elem(1,row)){
+        int projet = R(i,voeu);
+        IntegerVector col = X(_,projet-1);
+        if((produit_scalaire(taille_g,col) + taille_g[i] <= P[projet-1])){
+          X(i,projet-1) = 1;
+        }
+        voeu += 1;
       }
     }
-    voeu += 1;
     c = sum(rowSums(X));
   }
   for(int groupe = 0; groupe < G.size(); groupe ++){

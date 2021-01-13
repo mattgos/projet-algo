@@ -128,7 +128,13 @@ List branch_rcpp(IntegerVector chemin,List G,IntegerVector P, IntegerMatrix R) {
 // [[Rcpp::export]]
 IntegerMatrix branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
   List SP = Init_b_and_b_rcpp(G,P,R);
-  int U = P.size()*G.size();
+  IntegerVector taille_g(G.size());
+  for(int j = 0; j < G.size(); j++){
+    IntegerVector v = G[j];
+    taille_g[j] = v.size();
+  }
+  int nb_eleve = sum(taille_g);
+  int U = P.size()*nb_eleve;
   IntegerVector chemin_pot;
   List branche;
   IntegerVector opti;
@@ -153,12 +159,6 @@ IntegerMatrix branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
   List res;
   res.push_back(chemin_opti);
   res.push_back(U);
-  IntegerVector taille_g(G.size());
-  for(int j = 0; j < G.size(); j++){
-    IntegerVector v = G[j];
-    taille_g[j] = v.size();
-  }
-  int nb_eleve = sum(taille_g);
   IntegerMatrix Sol(nb_eleve,3);
   CharacterVector nom_colonnes = CharacterVector::create("Eleve","Groupe","Projet");
   colnames(Sol) = nom_colonnes;

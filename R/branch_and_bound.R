@@ -84,7 +84,12 @@ delete_chemin = function(chemin,SP) {
 
 branch_and_bound = function(G,P,R) {
   SP = Init_b_and_b(G,P,R)
-  U = length(P)*length(G)
+  taille_g = c()
+  for (i in 1:length(G)){
+    taille_g=c(taille_g,length(G[[i]]))
+  }
+  nb_eleve=sum(taille_g)
+  U = length(P)*nb_eleve
   while(length(SP) != 0) {
     chemin_pot = cout_min(SP)
     SP = delete_chemin(chemin_pot, SP)
@@ -99,11 +104,6 @@ branch_and_bound = function(G,P,R) {
     }
   }
   res = list(chemin = chemin_opti, cout = U)
-  taille_g = c()
-  for (i in 1:length(G)){
-    taille_g=c(taille_g,length(G[[i]]))
-  }
-  nb_eleve=sum(taille_g)
   Sol = matrix(0,ncol=3,nrow = nb_eleve)
   colnames(Sol)<-c("Eleve","Groupe","Projet")
   for(i in 1:length(res$chemin)) {

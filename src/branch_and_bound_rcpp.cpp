@@ -134,7 +134,7 @@ IntegerMatrix branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
     taille_g[j] = v.size();
   }
   int nb_eleve = sum(taille_g);
-  int U = P.size()*nb_eleve;
+  int U = P.size()*nb_eleve+1;
   IntegerVector chemin_pot;
   List branche;
   IntegerVector opti;

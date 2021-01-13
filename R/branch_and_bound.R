@@ -89,7 +89,7 @@ branch_and_bound = function(G,P,R) {
     taille_g=c(taille_g,length(G[[i]]))
   }
   nb_eleve=sum(taille_g)
-  U = length(P)*nb_eleve
+  U = length(P)*nb_eleve+1
   while(length(SP) != 0) {
     chemin_pot = cout_min(SP)
     SP = delete_chemin(chemin_pot, SP)

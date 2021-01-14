@@ -8,11 +8,18 @@ taille_groupe<-function(G){
   return(res)
 }
 
+#' glouton_algorithm
+#'
+#' @description Attribution d'un projet à un groupe par ordre des voeux et d'inscription dans la liste de groupe
+#' @param G une liste des groupes d'élèves
+#' @param P une liste de projets
+#' @param R une liste de liste de voeux de chaque groupe de G
+#' @return la matrice d'attribution des projets par élève et par groupe
 glouton_algorithm = function(G,P,R){
   X = matrix(0,length(G),length(P))
   c = sum(colSums(X))
   t=taille_groupe(G)
-  while (c != length(G)) {
+  while (c != length(G)) { #chaque groupe doit avoir un projet
     for(i in 1:length(G)){
       for(voeu in 1:length(P)){
         projet = R[i,voeu]

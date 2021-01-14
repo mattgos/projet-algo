@@ -8,9 +8,9 @@ taille_groupe<-function(G){
   return(res)
 }
 
-#' glouton_algorithm
+#' Affectation par méthode gloutonne
 #'
-#' @description Attribution d'un projet à un groupe par ordre des voeux et d'inscription dans la liste de groupe
+#' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
 #' @param G une liste des groupes d'élèves
 #' @param P une liste de projets
 #' @param R une liste de liste de voeux de chaque groupe de G
@@ -23,7 +23,7 @@ glouton_algorithm = function(G,P,R){
     for(i in 1:length(G)){
       for(voeu in 1:length(P)){
         projet = R[i,voeu]
-        if((t%*%X[,projet] + t[i] <= P[projet]) && !is.element(1,X[i,])){
+        if((t%*%X[,projet] + t[i] <= P[projet]) && !is.element(1,X[i,])){ 
           X[i,projet] = 1
           break
         }

@@ -113,7 +113,7 @@ comptage_eleve <- function(groupe) {
 #' @param R une liste de voeu classée par ordre de priorité pour chaque groupe
 #' @return renvoie une matrice X de taille (nb eleves,4) telle que chaque colonne correspond à l'élève, son groupe, son projet et son équipe-projet
 #' @export
-lotterie_rcpp <- function(P, G, R) {
+lottery_rcpp <- function(P, G, R) {
     .Call(`_projet_lottery_rcpp`, P, G, R)
 }
 

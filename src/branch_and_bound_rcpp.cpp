@@ -19,15 +19,21 @@ List Init_b_and_b_rcpp(List G, IntegerVector P,IntegerMatrix R) {
     IntegerVector g = G[i];
     cout_ideal = cout_ideal + g.length();
   }
+  IntegerVector new_P(P.size());
+  for(int k = 0; k < P.size(); k ++) {
+    new_P[k] = P[k];
+  }
   IntegerVector g1 = G[0];
   for(int j = 0; j < P.size(); j++){
-    IntegerVector V = R(0,_);
-    int voeu = which_equal_bis(V,j+1) + 1;
-    int new_cout = voeu*g1.length() + cout_ideal;
-    IntegerVector chemin;
-    chemin.push_back(j+1);
-    chemin.push_back(new_cout);
-    SP.push_back(chemin);
+    if(new_P[j] - g1.length() >= 0){
+      IntegerVector V = R(0,_);
+      int voeu = which_equal_bis(V,j+1) + 1;
+      int new_cout = voeu*g1.length() + cout_ideal;
+      IntegerVector chemin;
+      chemin.push_back(j+1);
+      chemin.push_back(new_cout);
+      SP.push_back(chemin);
+    }
   }
   return(SP);
 }

@@ -1,13 +1,17 @@
 Init_b_and_b = function(G,P,R) {
   SP = c()
   cout_ideal = 0
+  taille_g = length(G[[1]])
+  new_P = P
   for(i in 2:length(G)){
     cout_ideal = cout_ideal + length(G[[i]])
   }
   for(j in 1:length(P)){
-    voeu = which(R[1,] == j)
-    new_cout = length(G[[1]]) * voeu + cout_ideal
-    SP = c(SP,list(c(j,new_cout)))
+    if(new_P[j] - taille_g >= 0) {
+      voeu = which(R[1,] == j)
+      new_cout = length(G[[1]]) * voeu + cout_ideal
+      SP = c(SP,list(c(j,new_cout)))
+    }
   }
   return(SP)
 }
@@ -19,7 +23,6 @@ cout_min = function(SP) {
   }
   return(SP[[which.min(cout)]])
 }
-
 
 projet_dispo = function(chemin, G, P) {
   liste_projet_dispo = c()
@@ -83,14 +86,6 @@ delete_chemin = function(chemin,SP) {
   return(new_SP)
 }
 
-
-#' Affectation par branch and bound
-#'
-#' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
-#' @param G une liste des groupes d'élèves
-#' @param P une liste de projets
-#' @param R une matrice de voeux de chaque groupe de G
-#' @return la matrice d'attribution des projets par élève et par groupe
 branch_and_bound = function(G,P,R) {
   SP = Init_b_and_b(G,P,R)
   taille_g = c()

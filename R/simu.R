@@ -1,3 +1,10 @@
+
+#' Simulation de l'échantillon
+#'
+#' @description fonction de simulation d'un échantillon d'élèves par groupe et de projets
+#' @param nb_eleve nombre d'élèves devant choisir un projet
+#' @param nb_proj nombre de projets total
+#' @return une liste contenant : la liste des projets, la liste des groupes d'élèves et la liste de leurs voeux respectifs
 simu<-function(nb_eleve,nb_proj){
   
   if (nb_eleve<nb_proj){

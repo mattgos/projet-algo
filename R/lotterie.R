@@ -8,6 +8,14 @@
 # G=list(c(4,2),c(3),c(5),c(1),c(6))
 # R=list(c(2,1),c(1,2),c(1,2),c(2,1),c(2,1))
 
+
+#' Affectation par lotterie
+#'
+#' @description Affectation des élèves à un projet par ordre des voeux et d''inscription'un système de lotterie
+#' @param G une liste des groupes d'élèves
+#' @param P une liste de projets
+#' @param R une mactrice de voeux de chaque groupe de G
+#' @return la matrice d'attribution des projets par élève et par groupe
 lotterie<-function(P,p,G,R){
   
   # p=list()

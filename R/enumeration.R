@@ -34,7 +34,7 @@ binarise = function(i,n,m){
 #' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
 #' @param G une liste des groupes d'élèves
 #' @param P une liste de projets
-#' @param R une liste de liste de voeux de chaque groupe de G
+#' @param R une mactrice de voeux de chaque groupe de G
 #' @return la matrice d'attribution des projets par élève et par groupe
 enumeration = function(G,P,R){
   n = length(G)

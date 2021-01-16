@@ -8,25 +8,25 @@
 # G=list(c(4,2),c(3),c(5),c(1),c(6))
 # R=list(c(2,1),c(1,2),c(1,2),c(2,1),c(2,1))
 
-lotterie<-function(G,P,R){
+lotterie<-function(P,p,G,R){
   
-  p=list()
-  for (i in P){
-    p=append(p,c(i))
-  }
-
-  R_new=R
-  R=list()
-  for (i in 1:length(R_new[,1])){
-    R=append(R,list(R_new[i,]))
-  }
-
-  P_new=P
-  P=c()
-  for (i in 1:length(P_new)){
-    P=c(P,paste("projet",i))
-  }
-  
+  # p=list()
+  # for (i in P){
+  #   p=append(p,c(i))
+  # }
+  # 
+  # R_new=R
+  # R=list()
+  # for (i in 1:length(R_new[,1])){
+  #   R=append(R,list(R_new[i,]))
+  # }
+  # 
+  # P_new=P
+  # P=c()
+  # for (i in 1:length(P_new)){
+  #   P=c(P,paste("projet",i))
+  # }
+  # 
   ind_group=1:length(G)
   nb_proj=length(P)
   nb_gr=length(G)
@@ -117,5 +117,5 @@ lotterie<-function(G,P,R){
   }
   
   colnames(res)<-c("Eleve","Groupe","Projet","Equipe-projet")
-  return(res[,-4])
+  return(res)
 }

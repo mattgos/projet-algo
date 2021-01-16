@@ -22,7 +22,7 @@ simu<-function(nb_eleve,nb_proj){
       if (P_rem[i]==1){
         if (length(repart_eleve)==1){
           G=append(G,c(repart_eleve))
-          repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+          repart_eleve=c()
           P_rem[i]=P_rem[i]-1
         }
         else{
@@ -35,7 +35,7 @@ simu<-function(nb_eleve,nb_proj){
       else{
         if(length(repart_eleve)==1){
           G=append(G,c(repart_eleve))
-          repart_eleve=repart_eleve[!(repart_eleve==eleve)]
+          repart_eleve=c()
           P_rem[i]=P_rem[i]-1
         }
         else{

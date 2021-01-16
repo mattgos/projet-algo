@@ -41,7 +41,7 @@ one.simu <- function(n=10,m=2, type = "sample", custom = None, func = "lotterie"
 ############# One time complexity test ####################
 ###########################################################
 #we evaluate the time with a given n for algorithms
-print_onesimu <- function(){
+
 one.simu(n,m,func = "lotterie")
 one.simu(n,m,func = "algo_glouton")
 one.simu(n,m,func = "enumeration")
@@ -50,7 +50,7 @@ one.simu(n,m,func = "lotterie_rcpp")
 one.simu(n,m,func = "glouton_rcpp")
 one.simu(n,m,func = "enumeration_rcpp")
 one.simu(n,m,func = "branch_and_bound_rcpp")
-}
+
 #########################################################################
 ############# A short simulation study at fixed vector size #############
 #########################################################################

@@ -1,15 +1,15 @@
-<<<<<<< HEAD
-# ################################################
-# ############# A simple test ####################
-# ################################################
-# 
-# n <- 15 #nombre d'élèves
-# m <- 4 #nombre de projets
-# s <- simu(n,m) #generate data
-# 
-# 
-# # algorithms
-# 
+# <<<<<<< HEAD
+################################################
+############# A simple test ####################
+################################################
+
+n <- 15 #nombre d'élèves
+m <- 4 #nombre de projets
+s <- simu(n,m) #generate data
+
+
+# algorithms
+
 # lotterie(s)
 # algo_glouton(s)
 # enumeration(s)
@@ -18,40 +18,40 @@
 # glouton_rcpp(s)
 # enumeration_rcpp(s)
 # branch_and_bound_rcpp(s)
-# 
-# 
-# ################################################################################################
-# # We define the function one.simu which returns the execution time of a given algorithm
-# one.simu <- function(n=10,m=2, type = "sample", custom = None, func = "lotterie")
-# {
-#   if(type == "sample"){v <- simu(n,m)}else{v = custom}
-#   if(func == "lotterie"){tm <- system.time(lotterie(v))[[1]]}
-#   if(func == "algo_glouton"){tm <- system.time(algo_glouton(v))[[1]]}
-#   if(func == "enumeration"){tm <- system.time(enumeration(v))[[1]]}
-#   if(func == "branch_and_bound"){tm <- system.time(branch_and_bound(v))[[1]]}
-#   if(func == "lotterie_rcpp"){tm <- system.time(lotterie_rcpp(v))[[1]]}
-#   if(func == "glouton_rcpp"){tm <- system.time(glouton_rcpp(v))[[1]]}
-#   if(func == "enumeration_rcpp"){tm <- system.time(enumeration_rcpp(v))[[1]]}
-#   if(func == "branch_and_bound_rcpp"){tm <- system.time(branch_and_bound_rcpp(v))[[1]]}
-#   
-#   return(tm)
-# }
-# ################################################################################################
-# 
-# ###########################################################
-# ############# One time complexity test ####################
-# ###########################################################
-# #we evaluate the time with a given n for algorithms
-# 
-# one.simu(n,m,func = "lotterie")
-# one.simu(n,m,func = "algo_glouton")
-# one.simu(n,m,func = "enumeration")
-# one.simu(n,m,func = "branch_and_bound")
-# one.simu(n,m,func = "lotterie_rcpp")
-# one.simu(n,m,func = "glouton_rcpp")
-# one.simu(n,m,func = "enumeration_rcpp")
-# one.simu(n,m,func = "branch_and_bound_rcpp")
-# 
+
+
+################################################################################################
+# We define the function one.simu which returns the execution time of a given algorithm
+one.simu <- function(n=10,m=2, type = "sample", custom = None, func = "lotterie")
+{
+  if(type == "sample"){v <- simu(n,m)}else{v = custom}
+  if(func == "lotterie"){tm <- system.time(lotterie(v))[[1]]}
+  if(func == "algo_glouton"){tm <- system.time(algo_glouton(v))[[1]]}
+  if(func == "enumeration"){tm <- system.time(enumeration(v))[[1]]}
+  if(func == "branch_and_bound"){tm <- system.time(branch_and_bound(v))[[1]]}
+  if(func == "lotterie_rcpp"){tm <- system.time(lotterie_rcpp(v))[[1]]}
+  if(func == "glouton_rcpp"){tm <- system.time(glouton_rcpp(v))[[1]]}
+  if(func == "enumeration_rcpp"){tm <- system.time(enumeration_rcpp(v))[[1]]}
+  if(func == "branch_and_bound_rcpp"){tm <- system.time(branch_and_bound_rcpp(v))[[1]]}
+
+  return(tm)
+}
+################################################################################################
+
+###########################################################
+############# One time complexity test ####################
+###########################################################
+#we evaluate the time with a given n for algorithms
+print_onesimu <- function()
+{one.simu(n,m,func = "lotterie")
+one.simu(n,m,func = "algo_glouton")
+one.simu(n,m,func = "enumeration")
+one.simu(n,m,func = "branch_and_bound")
+one.simu(n,m,func = "lotterie_rcpp")
+one.simu(n,m,func = "glouton_rcpp")
+one.simu(n,m,func = "enumeration_rcpp")
+one.simu(n,m,func = "branch_and_bound_rcpp")}
+
 # #########################################################################
 # ############# A short simulation study at fixed vector size #############
 # #########################################################################

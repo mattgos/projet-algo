@@ -28,6 +28,14 @@ binarise = function(i,n,m){
   return(res)
 }
 
+
+#' Affectation par énumération des possibilités
+#'
+#' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
+#' @param G une liste des groupes d'élèves
+#' @param P une liste de projets
+#' @param R une liste de liste de voeux de chaque groupe de G
+#' @return la matrice d'attribution des projets par élève et par groupe
 enumeration = function(G,P,R){
   n = length(G)
   m = length(P)

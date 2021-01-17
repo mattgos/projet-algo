@@ -5,7 +5,7 @@
 #' @param nb_eleve nombre d'élèves devant choisir un projet
 #' @param nb_proj nombre de projets total
 #' @return une liste contenant : la liste des projets, la liste des groupes d'élèves et la matrice de leurs voeux respectifs
-simu<-function(nb_eleve,nb_proj){
+simu<-function(nb_eleve,nb_proj,max_eleve=NULL){
   
   if (nb_eleve<nb_proj){
     print("Le nombre d'eleves doit etre egal ou superieur au nombre de projets")
@@ -46,7 +46,10 @@ simu<-function(nb_eleve,nb_proj){
           P_rem[i]=P_rem[i]-1
         }
         else{
-          nb_eleve_groupe=sample(1:P_rem[i],1)
+          if(!is.null(max_eleve) && P_rem[i]>max_eleve){
+            nb_eleve_groupe=sample(1:max_eleve,1)
+          }
+          else{nb_eleve_groupe=sample(1:P_rem[i],1)}
           gr=sample(repart_eleve,nb_eleve_groupe)
           repart_eleve=repart_eleve[!(repart_eleve %in% gr)]
           G=append(G,list(gr))

@@ -6,4 +6,4 @@
 *.o
 *.so
 *~
-*.o.tmp
+src/*.o.tmp

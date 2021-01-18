@@ -5,5 +5,3 @@
 .DS_Store
 *.o
 *.so
-*~
-src/*.o.tmp

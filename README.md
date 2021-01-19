@@ -491,9 +491,9 @@ pire des cas mais peut avoir une complexité polynomiale dans le meilleur
 des cas. On procède comme précedemment.
 
 ``` r
-nbSimus<-20
+nbSimus<-8
 nbRep<-10
-nb_eleve=round(seq(from = 5, to = 25, length.out = nbSimus))
+nb_eleve=round(seq(from = 5, to = 12, length.out = nbSimus))
 nb_proj = 5
 bb_Rcpp_group<-matrix(0, nbSimus, nbRep + 1)
 colnames(bb_Rcpp_group) <- c("n", paste0("Rep",1:nbRep))
@@ -511,17 +511,6 @@ plot(nb_eleve, res, type = 'b', xlab = "nb_groupe", ylab = "mean time in seconds
 
 ![](READ_ME_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
-``` r
-lm(log(res[3:20]) ~ log(nb_eleve[3:20]))
-```
-
-    ## 
-    ## Call:
-    ## lm(formula = log(res[3:20]) ~ log(nb_eleve[3:20]))
-    ## 
-    ## Coefficients:
-    ##         (Intercept)  log(nb_eleve[3:20])  
-    ##             -18.541                7.032
 
 ``` r
 nbSimus<- 9
@@ -543,18 +532,6 @@ plot(nb_proj, res, type = 'b', xlab = "nb_projet", ylab = "mean time in seconds"
 ```
 
 ![](READ_ME_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
-
-``` r
-lm(log(res[2:9]) ~ log(nb_proj[2:9]))
-```
-
-    ## 
-    ## Call:
-    ## lm(formula = log(res[2:9]) ~ log(nb_proj[2:9]))
-    ## 
-    ## Coefficients:
-    ##       (Intercept)  log(nb_proj[2:9])  
-    ##           -15.345              7.996
 
 ### Autres outils
 

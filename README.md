@@ -531,7 +531,7 @@ res <- rowMeans(bb_Rcpp_proj[,-1])
 plot(nb_proj, res, type = 'b', xlab = "nb_projet", ylab = "mean time in seconds")
 ```
 
-![](READ_ME_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](READ_ME_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
 ### Autres outils
 

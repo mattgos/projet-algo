@@ -556,7 +556,7 @@ lm(log(res[2:9]) ~ log(nb_proj[2:9]))
     ##       (Intercept)  log(nb_proj[2:9])  
     ##           -15.345              7.996
 
-\#\#\#Autres outils
+### Autres outils
 
 Nous avons implémenté une fonction qui s’appelle `change_view` et qui
 permet d’observer des résultats sous une autre forme.
@@ -575,7 +575,7 @@ Enfin, nous avons aussi implémenté les fonctions `lotterie` et
 `lottery_rcpp` qui implémentent en R et C++ la méthode lotterie expliqué
 dans la référence *Handling preferences in student-project allocation*.
 
-Elle intégre notamment la possibilité de d’établir plusieurs équipes
+Elle intégre notamment la possibilité d’établir plusieurs équipes
 pour un même projet mais peut ne pas attribuer de projets à des
 étudiants à la fin.
 

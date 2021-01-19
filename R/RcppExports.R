@@ -33,6 +33,14 @@ branch_rcpp <- function(chemin, G, P, R) {
     .Call(`_projet_branch_rcpp`, chemin, G, P, R)
 }
 
+#'Affectation par méthode branch and bound
+#'
+#' @description fonction de simulation d'une attribution avec la méthode du branch and bound
+#' @param G contient les groupes d'élèves
+#' @param P contient les projets et leurs capacités maximales
+#' @param R matrice qui contient l'ordre de préférence de chaque groupe
+#' @return une attribution d'élèves à des projets optimisée
+#' @export
 branch_and_bound_rcpp <- function(G, P, R) {
     .Call(`_projet_branch_and_bound_rcpp`, G, P, R)
 }
@@ -61,6 +69,14 @@ produit_vecteur_matrice <- function(V, M) {
     .Call(`_projet_produit_vecteur_matrice`, V, M)
 }
 
+#' Affectation par énumération des possibilités
+#'
+#' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
+#' @param G une liste des groupes d'élèves
+#' @param P une liste de projets
+#' @param R une mactrice de voeux de chaque groupe de G
+#' @return la matrice d'attribution des projets par élève et par groupe
+#' @export
 enumeration_rcpp <- function(G, P, R) {
     .Call(`_projet_enumeration_rcpp`, G, P, R)
 }
@@ -73,6 +89,14 @@ produit_scalaire <- function(U, V) {
     .Call(`_projet_produit_scalaire`, U, V)
 }
 
+#' Affectation par méthode gloutonne
+#'
+#' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
+#' @param G une liste des groupes d'élèves
+#' @param P une liste de projets
+#' @param R une matrice de voeux de chaque groupe de G
+#' @return la matrice d'attribution des projets par élève et par groupe
+#' @export
 glouton_rcpp <- function(G, P, R) {
     .Call(`_projet_glouton_rcpp`, G, P, R)
 }
@@ -97,7 +121,7 @@ is_element <- function(n, v) {
     .Call(`_projet_is_element`, n, v)
 }
 
-#' Which algorithme using C++
+#' comptage élève algorithme using C++
 #' 
 #' @param G une liste de groupe d'étudiant
 #' @return le nombre d'étudiant total
@@ -106,7 +130,7 @@ comptage_eleve <- function(groupe) {
     .Call(`_projet_comptage_eleve`, groupe)
 }
 
-#' Which algorithme using C++
+#' Méthode lottery algorithm using C++
 #' 
 #' @param P une liste de projet avec des équipes de projet
 #' @param G une liste de groupe d'étudiant

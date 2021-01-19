@@ -69,6 +69,14 @@ IntegerVector produit_vecteur_matrice(IntegerVector V, IntegerMatrix M) {
   return(res);
 }
 
+//' Affectation par énumération des possibilités
+//'
+//' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
+//' @param G une liste des groupes d'élèves
+//' @param P une liste de projets
+//' @param R une mactrice de voeux de chaque groupe de G
+//' @return la matrice d'attribution des projets par élève et par groupe
+//' @export
 // [[Rcpp::export]]
 IntegerMatrix enumeration_rcpp(List G, IntegerVector P,IntegerMatrix R){
   int n = G.size();

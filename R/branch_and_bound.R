@@ -86,6 +86,15 @@ delete_chemin = function(chemin,SP) {
   return(new_SP)
 }
 
+#'Affectation par méthode branch and bound
+#'
+#' @description fonction de simulation d'une attribution avec la méthode du branch and bound
+#' @param G contient les groupes d'élèves
+#' @param P contient les projets et leurs capacités maximales
+#' @param R matrice qui contient l'ordre de préférence de chaque groupe
+#' @return une attribution d'élèves à des projets optimisée
+#'
+
 branch_and_bound = function(G,P,R) {
   SP = Init_b_and_b(G,P,R)
   taille_g = c()

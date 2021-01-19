@@ -1,11 +1,13 @@
 Package: projet
 Type: Package
-Title: Attribution d'élèves à des projets
+Title: Attribution d'eleves a des projets
 Version: 1.0
 Date: 2020-12-12
-Author: MANOUVRIEZ Dorian, GOSSET Matthieu, BERNARD Clément
+Author: MANOUVRIEZ Dorian, GOSSET Matthieu, BERNARD Clement
 Maintainer: Matthieu GOSSET <matthieu.gosset@ensiie.fr>
-Description: Ce package propose des méthodes (naïves et optimisées pour attribuer une liste d'équipes d'élèves avec des projets selon la préférence des élèves)
+Description: Ce package propose des methodes (naives et optimisees pour attribuer une liste d'equipes d'eleves avec des projets selon la preference des eleves)
 License: GPL (>= 2)
+Encoding: UTF-8
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
+RoxygenNote: 7.1.1

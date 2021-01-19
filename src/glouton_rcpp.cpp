@@ -20,6 +20,14 @@ int produit_scalaire(IntegerVector U, IntegerVector V) {
   return(s);
 }
 
+//' Affectation par méthode gloutonne
+//'
+//' @description Affectation des élèves à un projet par ordre des voeux et d'inscription
+//' @param G une liste des groupes d'élèves
+//' @param P une liste de projets
+//' @param R une matrice de voeux de chaque groupe de G
+//' @return la matrice d'attribution des projets par élève et par groupe
+//' @export
 // [[Rcpp::export]]
 IntegerMatrix glouton_rcpp(List G, IntegerVector P, IntegerMatrix R) {
   IntegerMatrix X(G.size(),P.size());

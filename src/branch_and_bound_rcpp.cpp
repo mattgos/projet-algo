@@ -131,6 +131,14 @@ List branch_rcpp(IntegerVector chemin,List G,IntegerVector P, IntegerMatrix R) {
   return(SP);
 }
 
+//'Affectation par méthode branch and bound
+//'
+//' @description fonction de simulation d'une attribution avec la méthode du branch and bound
+//' @param G contient les groupes d'élèves
+//' @param P contient les projets et leurs capacités maximales
+//' @param R matrice qui contient l'ordre de préférence de chaque groupe
+//' @return une attribution d'élèves à des projets optimisée
+//' @export
 // [[Rcpp::export]]
 IntegerMatrix branch_and_bound_rcpp(List G,IntegerVector P,IntegerMatrix R) {
   List SP = Init_b_and_b_rcpp(G,P,R);

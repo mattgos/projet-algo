@@ -1,10 +1,13 @@
 
-#' Simulation de l'échantillon
+#'Simulation de l'échantillon
 #'
 #' @description fonction de simulation d'un échantillon d'élèves par groupe et de projets
 #' @param nb_eleve nombre d'élèves devant choisir un projet
 #' @param nb_proj nombre de projets total
+#' @param max_eleve permet de fixer le nombre maximal d'élèves dans un groupe
 #' @return une liste contenant : la liste des projets, la liste des groupes d'élèves et la matrice de leurs voeux respectifs
+#'
+
 simu<-function(nb_eleve,nb_proj,max_eleve=NULL){
   
   if (nb_eleve<nb_proj){
@@ -59,13 +62,14 @@ simu<-function(nb_eleve,nb_proj,max_eleve=NULL){
     }
   }
   
-  
+  #########################################################
+  #########################################################
   # nb_group=sample(nb_proj:nb_eleve,1)
   # prem=sample(repart_eleve,nb_group)
   # G=list()
   # for (i in prem){
   #   G=append(G,i)
-  #   
+  # 
   # }
   # repart_eleve=repart_eleve[!(repart_eleve %in% prem)]
   # 
@@ -88,6 +92,8 @@ simu<-function(nb_eleve,nb_proj,max_eleve=NULL){
   #   G[[ind_aj[j]]]=c(G[[ind_aj[j]]],i)
   #   j=j+1
   # }
+  #########################################################
+  #########################################################
   
   nb_group=length(G)
   

@@ -12,8 +12,9 @@
 #' Affectation par lotterie
 #'
 #' @description Affectation des élèves à un projet par ordre des voeux et d''inscription'un système de lotterie
-#' @param G une liste des groupes d'élèves
 #' @param P une liste de projets
+#' @param p contient les capacités maximum des projets
+#' @param G une liste des groupes d'élèves
 #' @param R une mactrice de voeux de chaque groupe de G
 #' @return la matrice d'attribution des projets par élève et par groupe
 lotterie<-function(P,p,G,R){

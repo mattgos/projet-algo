@@ -33,7 +33,7 @@ bool is_element(int n, IntegerVector v) {
   return(false);
 }
 
-//' Which algorithme using C++
+//' comptage élève algorithme using C++
 //' 
 //' @param G une liste de groupe d'étudiant
 //' @return le nombre d'étudiant total
@@ -48,7 +48,7 @@ int comptage_eleve(List groupe) {
   return(res);
 }
 
-//' Which algorithme using C++
+//' Méthode lottery algorithm using C++
 //' 
 //' @param P une liste de projet avec des équipes de projet
 //' @param G une liste de groupe d'étudiant

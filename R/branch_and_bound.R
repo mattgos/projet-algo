@@ -79,8 +79,16 @@ elagage = function(cout_opti,SP) {
 delete_chemin = function(chemin,SP) {
   new_SP = c()
   for(i in 1:length(SP)) {
-    if(!setequal(SP[[i]],chemin)) {
+    if(length(SP[[i]]) != length(chemin)){
       new_SP = c(new_SP,list(SP[[i]]))
+    }
+    else {
+      for(j in 1:length(chemin)){
+        if(SP[[i]][j] - chemin[j] != 0){
+          new_SP = c(new_SP,list(SP[[i]]))
+          break
+        }
+      }
     }
   }
   return(new_SP)

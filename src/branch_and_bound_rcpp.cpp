@@ -78,10 +78,20 @@ List elagage_rcpp(int cout_opti, List SP) {
 // [[Rcpp::export]]
 List delete_chemin_rcpp(IntegerVector chemin,List SP) {
   List new_SP;
+  int taille_chemin = chemin.length();
   for(int i = 0; i < SP.size(); i++) {
     IntegerVector chemin_pot = SP[i];
-    if(!setequal(chemin_pot,chemin)) {
+    int taille_chemin_pot = chemin_pot.length();
+    if(taille_chemin_pot != taille_chemin){
       new_SP.push_back(chemin_pot);
+    }
+    else{
+      for(int j = 0; j < taille_chemin; j++){
+        if(chemin_pot[j] - chemin[j] != 0){
+          new_SP.push_back(chemin_pot);
+          break;
+        }
+      }
     }
   }
   return(new_SP);

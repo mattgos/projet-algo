@@ -319,7 +319,7 @@ time4/time6
 On observe que les méthodes `énumération` sont beaucoup plus lentes que
 la méthode `branch and bound`.
 
-\#\#\#Microbenchmark
+### Microbenchmark
 
 ``` r
 library(microbenchmark)
@@ -450,7 +450,7 @@ plot(nb_proj, res, type = 'b', xlab = "nb_projet", ylab = "mean time in seconds"
 
 ![](READ_ME_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
-\#\#\#Complexité Enumeration
+### Complexité Enumeration
 
 L’algorithme d’énumération a une compléxité en
 \(2^{nb_{projet}*nb_{groupe}}\), ce qui fait qu’on ne peut pas tester
@@ -484,7 +484,7 @@ plot(nb_eleve*nb_eleve, res, type = 'b', xlab = "nb_groupe*nb_projet", ylab = "m
 
 ![](READ_ME_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
-\#\#\#Complexité Branch and Bound
+### Complexité Branch and Bound
 
 L’algorithme branch and bound a une complexité exponentielle dans le
 pire des cas mais peut avoir une complexité polynomiale dans le meilleur
